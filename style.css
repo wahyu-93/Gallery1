@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(33, 133, 190, 0.5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    width: 250px;
+    height: 400px;
+    transform-style: preserve-3d;
+    animation: animate 20s linear infinite;
+}
+
+.container:hover {
+    animation-play-state: paused;
+}
+
+.container span img:hover {
+    transform: scale(1,1.2);
+}
+
+@keyframes animate {
+    0%
+    {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100%
+    {
+        transform: perspective(1000px) rotateY(360deg);
+        
+    }
+}
+
+.container span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+    -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0005);
+}
+
+.container span img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: ease 0.4s;
+}
